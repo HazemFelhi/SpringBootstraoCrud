@@ -1,5 +1,6 @@
 package com.domain.controller;
 
+import com.domain.dto.SearchFormData;
 import com.domain.entity.Product;
 import com.domain.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,7 @@ public class HomeController {
     public String welcome(Model model){
         String messages= "Selamat SB!";
         model.addAttribute("msg", messages);
+        model.addAttribute("searchForm", new SearchFormData());
         model.addAttribute("products", productService.findAll());
         return "index";
     }
@@ -54,5 +56,16 @@ public class HomeController {
         productService.update(product);
         return "redirect:/";
     }
+
+    @PostMapping("/search")
+    public String search(SearchFormData searchFormData, Model model){
+        String messages= "Selamat datang gaes";
+        model.addAttribute("msg", messages);
+        model.addAttribute("searchForm", searchFormData);
+        model.addAttribute("products", productService.findByName(searchFormData.getKeyword()));
+        return "index";
+    }
+
+
 
 }

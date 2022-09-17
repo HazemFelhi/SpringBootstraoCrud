@@ -1,12 +1,17 @@
 package com.domain.entity;
 
-import org.springframework.boot.autoconfigure.domain.EntityScan;
+import javax.persistence.*;
 
-
+@Entity
+@Table(name="tbl_product")
 public class Product {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(length = 20, nullable = false, unique = true)
     private String code;
+    @Column(length = 150, nullable = false)
     private String name;
     private double price;
 
