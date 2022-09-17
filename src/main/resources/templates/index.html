@@ -54,6 +54,7 @@
                     <th>Kode</th>
                     <th>Nama</th>
                     <th>Harga</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +63,10 @@
                     <td th:text="${dataproduct.code}"></td>
                     <td th:text="${dataproduct.name}"></td>
                     <td th:text="${dataproduct.price}"></td>
+                    <td>
+                        <a class="btn btn-success" th:href="@{'/edit/'+${dataproduct.id}}">Edit</a>
+                        <a class="btn btn-danger" th:href="@{'/delete/'+${dataproduct.id}}">Del</a>
+                    </td>
                 </tr>
             </tbody>
         </table>
