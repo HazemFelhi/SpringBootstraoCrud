@@ -33,7 +33,7 @@ public class ProductService {
     }
 
     public Optional<Product> findById(long id){
-        return findById(id);
+        return repo.findById(id);
     }
 
     public void update(Product product){

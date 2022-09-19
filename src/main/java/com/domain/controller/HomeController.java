@@ -29,6 +29,7 @@ public class HomeController {
 
     @GetMapping("/add")
     public String add(Model model){
+        model.addAttribute("searchForm", new SearchFormData());
         model.addAttribute("product", new Product());
         return "add";
     }
@@ -47,12 +48,14 @@ public class HomeController {
 
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable("id") Long id, Model model){
+        model.addAttribute("searchForm", new SearchFormData());
         model.addAttribute("product", productService.findById(id));
         return "edit";
     }
 
     @PostMapping("/update")
     public String update(Product product, Model model){
+        System.out.println(product.getName());
         productService.update(product);
         return "redirect:/";
     }
